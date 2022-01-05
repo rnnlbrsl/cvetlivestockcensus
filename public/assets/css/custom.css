@@ -1,0 +1,32 @@
+/* .navbar-sticky-top
+{
+    position: fixed;
+    z-index: 999;
+    opacity:1;
+    width: 100%;
+}
+ */
+
+.homelogo
+{
+    height: 450px;
+    width: 450px;
+}
+
+.logodivcon
+{
+    text-align: center;
+}
+
+/* input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    color: #fff;
+    background-color: #3490dc;
+    border-color: #3490dc;
+    border-radius: 4px;
+    display: inline-block;
+    padding: 7px 12px;
+    cursor: pointer;
+} */
