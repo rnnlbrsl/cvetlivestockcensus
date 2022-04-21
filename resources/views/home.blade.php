@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container">
-    <div class="logodivcon">
-        <h2>Alaminos City Livestock Census</h2>
+    <h2 class="homepage-title">Alaminos City Livestock Census</h2>
+    <div class="logo-container">
         <br>
         <img class="homelogo" src="{{ asset('../assets/images/citylogo.png') }}" alt="City Logo"/>
     </div>
