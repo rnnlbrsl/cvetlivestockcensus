@@ -17,7 +17,7 @@ class RecordExport implements FromQuery, WithHeadings, WithEvents
     */
     public function query()
     {
-        return Records::select(
+        $records = Records::select(
             'record_id',
             'lastname',
             'firstname',
@@ -48,7 +48,17 @@ class RecordExport implements FromQuery, WithHeadings, WithEvents
             'fnative',
             'latitude',
             'longitude'
-        )->orderBy('record_id');
+        );
+
+        $records = Records::search(session('search'))
+            ->orderBy(session('orderBy'), session('orderAsc') ? 'asc' : 'desc');
+
+        if (!empty(session('filterBy'))) {
+            $records = $records->whereNotNull(session('filterBy'));
+        }
+
+        $records = $records->take(session('perPage'));
+        return $records;
     }
 
     public function headings(): array

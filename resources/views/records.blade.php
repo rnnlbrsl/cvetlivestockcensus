@@ -4,120 +4,15 @@ Livestock Census | All Records
 @endsection
 @section('content')
 <div class="container">
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="search-records">Search</span>
-        </div>
-        <input type="text" name="search" id="search" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+    <div class="pull-right">
+        <a href="{{ route('export_excel.excel') }}" class="btn btn-success" style="float:right;">Export to Excel</a>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="float:right; margin-right: 10px;">Import Excel File</button>
+        <br />
     </div>
     <div class="table-responsive">
-        <h4>Total Records: &nbsp; <span>{{ $total_record }}</span></h4>
-        <table class="table table-bordered ">
-            <thead>
-                <tr>                    
-                    <th class="align-middle text-center" scope="col" rowspan="2">Action</th>
-                    <th class="align-middle text-center" scope="col" rowspan="2">No.</th>
-                    <th class="align-middle text-center" scope="col" rowspan="2">Name</th>
-                    <th class="align-middle text-center" scope="col" rowspan="2">Gender</th>
-                    <th class="align-middle text-center" scope="col" rowspan="2">House No.</th>
-                    <th class="align-middle text-center" scope="col" rowspan="2">Sitio</th>
-                    <th class="align-middle text-center" scope="col" rowspan="2">Barangay</th>
-                    <th class="text-center" scope="col" colspan="2">Cattle</th>
-                    <th class="text-center" scope="col" colspan="2">Carabao</th>
-                    <th class="text-center" scope="col" colspan="2">Canine</th>
-                    <th class="text-center" scope="col" colspan="2">Feline</th>
-                    <th class="text-center" scope="col" colspan="2">Swine</th>
-                    <th class="text-center" scope="col" colspan="2">Poultry</th>
-                    <th class="text-center" scope="col" colspan="2">Duck</th>
-                    <th class="text-center" scope="col" colspan="2">Goat</th>
-                    <th class="text-center" scope="col" colspan="2">Game Fowl</th>
-                    <th class="text-center" scope="col" colspan="2">Native Pig</th>
-                    <th class="text-center" scope="col" colspan="2">Coordinates</th>
-                    <th class="align-middle text-center" scope="col" rowspan="2">Admin</th>
-                </tr>
-                <tr>
-                    <td class="align-middle text-center">Male</td>
-                    <td class="align-middle text-center">Female</td>
-                    <td class="align-middle text-center">Male</td>
-                    <td class="align-middle text-center">Female</td>
-                    <td class="align-middle text-center">Male</td>
-                    <td class="align-middle text-center">Female</td>
-                    <td class="align-middle text-center">Male</td>
-                    <td class="align-middle text-center">Female</td>
-                    <td class="align-middle text-center">Swine</td>
-                    <td class="align-middle text-center">Poultry</td>
-                    <td class="align-middle text-center">Duck</td>
-                    <td class="align-middle text-center">Goat</td>
-                    <td class="align-middle text-center">Drake</td>
-                    <td class="align-middle text-center">Duck</td>
-                    <td class="align-middle text-center">Buck</td>
-                    <td class="align-middle text-center">Doe</td>
-                    <td class="align-middle text-center">Rooster</td>
-                    <td class="align-middle text-center">Hen</td>
-                    <td class="align-middle text-center">Male</td>
-                    <td class="align-middle text-center">Female</td>
-                    <td class="align-middle text-center"><i>Longitude</i></td>
-                    <td class="align-middle text-center"><i>Latitude</i></td>
-                </tr>
-            </thead>
-            <tbody>
-                {{-- @foreach($records as $rec)
-                <tr>
-                    <td><strong>{{$rec->record_id}}</strong></td>
-                    <td>{{$rec->firstname. ' ' . $rec->lastname}}</td>
-                    <td>{{$rec->gender}}</td>
-                    <td>{{$rec->sitio}}</td>
-                    <td>{{$rec->mcattle}}</td>
-                    <td>{{$rec->fcattle}}</td>
-                    <td>{{$rec->mcarabao}}</td>
-                    <td>{{$rec->fcarabao}}</td>
-                    <td>{{$rec->mcanine}}</td>
-                    <td>{{$rec->fcanine}}</td>
-                    <td>{{$rec->mfeline}}</td>
-                    <td>{{$rec->ffeline}}</td>
-                    <td>{{$rec->fattener}}</td>
-                    <td>{{$rec->breeder}}</td>
-                    <td>{{$rec->phen}}</td>
-                    <td>{{$rec->prooster}}</td>
-                    <td>{{$rec->drake}}</td>
-                    <td>{{$rec->duck}}</td>
-                    <td>{{$rec->buck}}</td>
-                    <td>{{$rec->doe}}</td>
-                    <td>{{$rec->grooster}}</td>
-                    <td>{{$rec->ghen}}</td>
-                    <td>{{$rec->mnative}}</td>
-                    <td>{{$rec->fnative}}</td>
-                    <td>{{$rec->latitude}}</td>
-                    <td>{{$rec->longitude}}</td>
-                    <td>{{$rec->admin_id}}</td>
-                    <!-- <td><img width="200px" height="200px" src="{{ asset("storage/images/$rec->img")}}"/></td> -->
-                    <td>
-                        <div class="btn-group" role="group" aria-label="Action Buttons">
-                            <a class="btn btn-success" onclick="buttonOnClick({{$rec->record_id}}, 'view')">View</a>
-                            <a class="btn btn-primary" onclick="buttonOnClick({{$rec->record_id}}, 'edit')">Edit</a>
-                            <a class="btn btn-danger">Delete</a>
-                        </div>
-                    </td>
-                </tr>
-                @endforeach --}}
-            </tbody>
-        </table>
-        {{-- {{ $records->links() }} --}}
+        <livewire:records-table>
     </div>
     <br>
-    <div>
-        <a href="{{ route('export_excel.excel') }}" class="btn btn-success">Export to Excel</a>
-        <br />
-        <form action="/import_excel/import" method="post" enctype="multipart/form-data" id="MyUploadForm">
-            @csrf
-            <label for="file-upload" class="custom-file-upload">
-                <i class="fa fa-cloud-upload"></i> Import Excel File
-            </label>
-            <input name="select_file" type="file" />
-            <input type="submit"  id="submit-btn" value="Upload" />
-        </form>
-        <!-- <a href="/import" class="btn btn-primary">Import Excel File</a> -->
-    </div>
 </div>
 <!-- View Modal -->
 <div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="viewModal" aria-hidden="true">
@@ -411,32 +306,62 @@ Livestock Census | All Records
     </div>
 </div>
 <!-- End of View Modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Import Excel File</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/import_excel/import" method="post" enctype="multipart/form-data" id="MyUploadForm">
+            @csrf
+            <label for="file-upload" class="custom-file-upload">
+                <i class="fa fa-cloud-upload"></i> Import Excel File
+            </label>
+            <br />
+            <input name="select_file" type="file" />
+            <br />
+            <br />
+            <input type="submit" class="btn btn-primary" id="submit-btn" value="Upload" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <script>
-    $(document).ready(function() {
-        var url = new URL(window.location.href);
-        var page = url.searchParams.get("page");
-        if (!page) { // fetching of data only runs when there's no parameters in url
-            fetch_record_data();
-        }
+    // $(document).ready(function() {
+    //     var url = new URL(window.location.href);
+    //     var page = url.searchParams.get("page");
+    //     if (!page) { // fetching of data only runs when there's no parameters in url
+    //         fetch_record_data();
+    //     }
         
-        function fetch_record_data(query = '') {
-            $.ajax({
-                url: "{{ route('record.action') }}",
-                method: 'GET',
-                data: {query:query},
-                dataType: 'json',
-                success: function(data) {
-                    $('tbody').html(data.table_data);
-                    $('#total_records').text(data.total_data);
-                }
-            });
-        }
+    //     function fetch_record_data(query = '') {
+    //         $.ajax({
+    //             url: "{{ route('record.action') }}",
+    //             method: 'GET',
+    //             data: {query:query},
+    //             dataType: 'json',
+    //             success: function(data) {
+    //                 $('tbody').html(data.table_data);
+    //                 $('#total_records').text(data.total_data);
+    //             }
+    //         });
+    //     }
         
-        $(document).on('keyup', '#search', function() {
-            var query = $(this).val();
-            fetch_record_data(query);
-        });
-    });
+    //     $(document).on('keyup', '#search', function() {
+    //         var query = $(this).val();
+    //         fetch_record_data(query);
+    //     });
+    // });
     
     /**
     * @id int record_id

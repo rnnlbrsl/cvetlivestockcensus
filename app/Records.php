@@ -40,4 +40,12 @@ class Records extends Model
         'img',
         'admin_id'  
     ];
+
+    public static function search($search)
+    {
+        return empty($search) ? static::query()
+            : static::query()->where('firstname', 'like', '%'.$search.'%')
+                ->orWhere('lastname', 'like', '%'.$search.'%')
+                ->orWhere('middlename', 'like', '%'.$search.'%');
+    }
 }

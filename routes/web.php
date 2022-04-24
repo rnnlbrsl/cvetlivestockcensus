@@ -53,3 +53,7 @@ Route::get('/record/exportExcel','RecordExportController@export')->name('export_
 Route::post('/import_excel/import', 'RecordImportController@import');
 // Route::post('/import', 'RecordImportController@store')->name('import_excel.excel');
 
+// Users
+Route::get('/users', 'UserController@index')->name('users')->middleware('auth');
+Route::put('/user/{id}', 'UserController@edit')->name('edit/{id}')->middleware('auth');
+

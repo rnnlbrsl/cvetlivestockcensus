@@ -21,6 +21,9 @@
     <!-- Styles -->
     <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+    @livewireStyles
 </head>
 <body>
     <div id="app">
@@ -56,9 +59,15 @@
                             <li class="nav-item ml-auto">
                                 <a class="nav-link" href="{{ route('addrecord') }}">{{ __('Add Record') }}</a>
                             </li>
+                            
                             <li class="nav-item ml-auto">
                                 <a class="nav-link" href="{{ route('records') }}">{{ __('View Records') }}</a>
                             </li>
+                            @if (Auth::user()->id === 1)
+                            <li class="nav-item ml-auto">
+                                <a class="nav-link" href="{{ route('users') }}">{{ __('View Users') }}</a>
+                            </li>
+                            @endif
                             <!-- end of added list -->
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -92,5 +101,6 @@
         @yield('content')
         </main>
     </div>
+    @livewireScripts
 </body>
 </html>
